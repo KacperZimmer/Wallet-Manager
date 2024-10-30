@@ -47,7 +47,7 @@ local.properties
 
 # PDT-specific (PHP Development Tools)
 .buildpath
-/src/main/resources
+/src/main/resources/application.properties
 # sbteclipse plugin
 .target
 /
