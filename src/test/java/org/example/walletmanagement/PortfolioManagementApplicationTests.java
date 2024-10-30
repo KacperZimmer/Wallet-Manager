@@ -1,4 +1,4 @@
-package org.example.portfoliomanagement;
+package org.example.walletmanagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

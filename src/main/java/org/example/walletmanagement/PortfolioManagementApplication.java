@@ -1,4 +1,4 @@
-package org.example.portfoliomanagement;
+package org.example.walletmanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

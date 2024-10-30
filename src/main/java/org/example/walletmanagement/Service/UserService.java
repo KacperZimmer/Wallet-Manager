@@ -1,8 +1,8 @@
-package org.example.portfoliomanagement.Service;
+package org.example.walletmanagement.Service;
 
 
-import org.example.portfoliomanagement.Entity.User;
-import org.example.portfoliomanagement.Repository.UserRepository;
+import org.example.walletmanagement.Entity.User;
+import org.example.walletmanagement.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service

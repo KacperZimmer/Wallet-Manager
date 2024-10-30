@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.example</groupId>
-    <artifactId>PortfolioManagement</artifactId>
+    <artifactId>WalletManagement</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>PortfolioManagement</name>
     <description>PortfolioManagement</description>

@@ -1,5 +1,4 @@
-package org.example.portfoliomanagement.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+package org.example.walletmanagement.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

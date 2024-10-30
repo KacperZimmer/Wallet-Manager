@@ -1,4 +1,4 @@
-package org.example.portfoliomanagement.Entity;
+package org.example.walletmanagement.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

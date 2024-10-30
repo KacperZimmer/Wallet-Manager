@@ -1,15 +1,11 @@
-package org.example.portfoliomanagement.Controller;
+package org.example.walletmanagement.Controller;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.example.portfoliomanagement.Entity.User;
-import org.example.portfoliomanagement.Service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.example.walletmanagement.Entity.User;
+import org.example.walletmanagement.Service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class MainPageController {
