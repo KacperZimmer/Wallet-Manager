@@ -29,7 +29,7 @@ public class RegisterController {
         System.out.println(user);
         this.userService.registerUser(user);
 
-        return "redirect:/mainPage";
+        return "redirect:/login";
     }
 
 
