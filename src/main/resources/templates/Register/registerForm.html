@@ -11,7 +11,7 @@
     <form th:action="@{/register}" th:object="${user}" method="post">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" th:field="*{name}" class="form-control" id="username" required>
+            <input type="text" th:field="*{username}" class="form-control" id="username" required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>

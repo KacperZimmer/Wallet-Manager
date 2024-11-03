@@ -17,7 +17,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false, name = "user_name")
-    private String name;
+    private String username;
 
     @Column(nullable = false, name = "email")
     private String email;
@@ -30,7 +30,7 @@ public class User {
 
     public User(Long id, String name, String email, String password) {
         this.id = id;
-        this.name = name;
+        this.username = name;
         this.email = email;
         this.password = password;
     }

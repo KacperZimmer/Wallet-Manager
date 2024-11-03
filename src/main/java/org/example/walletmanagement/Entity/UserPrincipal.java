@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+
 public class UserPrincipal implements UserDetails {
     private final User user;
 
@@ -16,7 +17,7 @@ public class UserPrincipal implements UserDetails {
     }
     @Override
     public String getUsername() {
-        return this.user.getName();
+        return this.user.getUsername();
     }
 
     @Override
@@ -31,21 +32,21 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 }
