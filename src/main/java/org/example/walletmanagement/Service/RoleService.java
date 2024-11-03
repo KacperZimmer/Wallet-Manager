@@ -15,4 +15,9 @@ public class RoleService {
     public void saveRole(Role role){
         this.roleRepository.save(role);
     }
+    public void createRole(Role role,String name){
+        role.setName(name);
+        this.roleRepository.save(role);
+    }
+
 }
