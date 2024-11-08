@@ -12,9 +12,11 @@ public class RoleService {
     public RoleService(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
+
     public void saveRole(Role role){
         this.roleRepository.save(role);
     }
+
     public void createRole(Role role,String name){
         role.setName(name);
         this.roleRepository.save(role);
