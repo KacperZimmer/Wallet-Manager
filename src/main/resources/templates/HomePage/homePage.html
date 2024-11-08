@@ -40,14 +40,15 @@
         <p class="lead">Easily manage your finances, track your spending, and stay on top of your budget.</p>
         <hr class="my-4">
         <p>Create and manage portfolios, register transactions, and review reports. Secure and easy to use.</p>
-        <a class="btn btn-primary btn-lg" href="/register" role="button">Get Started</a>
+
+        <a th:if = "${!isLoggedIn}" class="btn btn-primary btn-lg" href="/register" role="button">Get Started</a>
     </div>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-4 mb-3">
-            <a href="/track-expenses" class="btn btn-primary d-block p-4 text-start shadow-sm">
+            <a href="/expenses" class="btn btn-primary d-block p-4 text-start shadow-sm">
                 <h5 class="mb-1">Track Expenses</h5>
                 <p class="mb-0">Record and categorize your expenses to stay on top of your finances.</p>
             </a>
