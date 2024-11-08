@@ -3,7 +3,9 @@ package org.example.walletmanagement.Component;
 import org.example.walletmanagement.Entity.Role;
 import org.example.walletmanagement.Service.RoleService;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DataInitializer implements CommandLineRunner {
 
     RoleService roleService;

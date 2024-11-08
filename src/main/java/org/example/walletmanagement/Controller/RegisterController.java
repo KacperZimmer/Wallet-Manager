@@ -1,4 +1,6 @@
 package org.example.walletmanagement.Controller;
+import org.example.walletmanagement.Entity.Role;
+import org.example.walletmanagement.Service.RoleService;
 import org.example.walletmanagement.Service.UserService;
 import org.springframework.ui.Model;
 import org.example.walletmanagement.Entity.User;
@@ -10,9 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class RegisterController {
 
     private final UserService userService;
+    private final RoleService roleService;
 
-    public RegisterController(UserService userService){
-
+    public RegisterController(UserService userService, RoleService roleService) {
+        this.roleService = roleService;
         this.userService = userService;
     }
 
@@ -26,7 +29,10 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String register(User user) {
+
         System.out.println(user);
+        Role role = roleService.findByName("ROLE_ADMIN");
+        user.getRoles().add(role);
         this.userService.registerUser(user);
 
         return "redirect:/login";

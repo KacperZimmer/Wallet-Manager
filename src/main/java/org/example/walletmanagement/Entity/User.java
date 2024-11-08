@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.walletmanagement.Service.RoleService;
+import org.example.walletmanagement.Service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +40,5 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     public User() {
-
     }
-
 }
