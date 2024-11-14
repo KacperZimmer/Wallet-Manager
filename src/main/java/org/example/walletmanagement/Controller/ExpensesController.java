@@ -24,6 +24,7 @@ public class ExpensesController {
         return "Expenses/track_expenses";
     }
 
+
     @GetMapping("/expenses/add_category")
     public String addCategory(Model model){
 
