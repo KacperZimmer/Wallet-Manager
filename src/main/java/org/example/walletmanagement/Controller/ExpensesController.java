@@ -2,7 +2,9 @@ package org.example.walletmanagement.Controller;
 
 import lombok.Getter;
 import org.example.walletmanagement.Entity.Category;
+import org.example.walletmanagement.Entity.Expense;
 import org.example.walletmanagement.Service.CategoryService;
+import org.example.walletmanagement.Service.ExpenseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,17 +15,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ExpensesController {
 
     CategoryService categoryService;
+    ExpenseService expenseService;
 
-    ExpensesController(CategoryService categoryService) {
+    ExpensesController(CategoryService categoryService, ExpenseService expenseService) {
         this.categoryService = categoryService;
+        this.expenseService = expenseService;
     }
 
     @GetMapping("/expenses")
-    public String trackExpenses(){
+    public String trackExpenses(Model model) {
 
+        Expense expense = new Expense();
+
+        model.addAttribute("expense", expense);
         return "Expenses/track_expenses";
     }
 
+    @PostMapping("/expenses")
+    public String addExpense(@ModelAttribute("expense") Expense expense){
+
+        expenseService.save(expense);
+        return "redirect:/expenses";
+    }
 
     @GetMapping("/expenses/add_category")
     public String addCategory(Model model){
@@ -34,6 +47,7 @@ public class ExpensesController {
 
         return "Expenses/add_category";
     }
+
 
     @PostMapping("/expenses/add_category")
     public String addCategory(@ModelAttribute("category") Category category){

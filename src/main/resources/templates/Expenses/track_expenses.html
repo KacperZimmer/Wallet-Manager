@@ -25,6 +25,27 @@
         </div>
     </div>
 
+    <form th:action="@{/expenses}" th:object="${expense}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" placeholder="Enter expense name"/>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" th:field="*{description}" placeholder="Enter expense description"/>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" th:field="*{amount}" placeholder="Enter amount" step="0.01"/>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" th:field="*{date}"/>
+
+        <label for="categories">Categories:</label>
+        <select id="categories" th:field="*{categories}" multiple>
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+        </select>
+
+        <button type="submit">Create Expense</button>
+    </form>
+
     <div class="text-center mt-4">
         <a href="/expenses/add_category" class="btn btn-success">
             Add New Category
