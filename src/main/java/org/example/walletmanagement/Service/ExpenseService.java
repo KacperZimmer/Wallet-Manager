@@ -4,6 +4,8 @@ import org.example.walletmanagement.Entity.Expense;
 import org.example.walletmanagement.Repository.ExpenseRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ExpenseService {
 
@@ -15,5 +17,12 @@ public class ExpenseService {
 
     public void save(Expense expense) {
         expenseRepository.save(expense);
+    }
+
+    public Expense findbyId(Long id) {
+        return expenseRepository.findById(id).orElse(null);
+    }
+    public List<Expense> findAll() {
+        return expenseRepository.findAll();
     }
 }

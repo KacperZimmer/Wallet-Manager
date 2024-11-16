@@ -21,6 +21,14 @@ public class ExpensesController {
         this.categoryService = categoryService;
         this.expenseService = expenseService;
     }
+    @GetMapping("/expenses/test")
+    public String test(Model model){
+        Expense expense1 = expenseService.findbyId(1L);
+        model.addAttribute("expense1", expense1);
+
+        return "Expenses/test";
+    }
+
 
     @GetMapping("/expenses")
     public String trackExpenses(Model model) {
