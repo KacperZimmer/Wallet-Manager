@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class ExpensesController {
 
@@ -34,7 +36,8 @@ public class ExpensesController {
     public String trackExpenses(Model model) {
 
         Expense expense = new Expense();
-
+        List<Category> categoryList = this.categoryService.findAll();
+        model.addAttribute("categoryList", categoryList);
         model.addAttribute("expense", expense);
         return "Expenses/track_expenses";
     }
