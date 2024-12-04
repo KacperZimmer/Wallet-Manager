@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @Getter
 @Setter
 public class Category {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,6 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "categories")
-    private Set<Expense> expenses;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Expense> expenses = new HashSet<>();
 }
