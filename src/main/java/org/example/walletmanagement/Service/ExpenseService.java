@@ -22,6 +22,10 @@ public class ExpenseService {
         return expenseRepository.findById(id).orElse(null);
     }
 
+    public void update(Expense expense) {
+        this.expenseRepository.save(expense);
+    }
+
     public List<Expense> findAll() {
         return expenseRepository.findAll();
     }

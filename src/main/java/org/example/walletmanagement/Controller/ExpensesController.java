@@ -49,6 +49,24 @@ public class ExpensesController {
 
         return "Expenses/track_expenses";
     }
+    @GetMapping("expenses/edit/{id}")
+    public String edit(@PathVariable Long id, Model model){
+        Expense expense = expenseService.findbyId(id);
+        model.addAttribute("expense", expense);
+        model.addAttribute("categoryList", this.categoryService.findAll());
+
+
+        return "Expenses/edit";
+    }
+
+    @PutMapping("expenses/edit/{id}")
+    public String update(@PathVariable Long id, @ModelAttribute Expense expense){
+
+        this.expenseService.update(expense);
+        expense.setId(id);
+
+        return "redirect:/expenses";
+    }
     @GetMapping("/expenses/add_category")
     public String addCategory(Model model){
 
