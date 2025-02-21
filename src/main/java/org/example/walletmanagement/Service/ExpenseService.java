@@ -18,11 +18,15 @@ public class ExpenseService {
     public void save(Expense expense) {
         expenseRepository.save(expense);
     }
-
     public Expense findbyId(Long id) {
         return expenseRepository.findById(id).orElse(null);
     }
+
     public List<Expense> findAll() {
         return expenseRepository.findAll();
     }
+    public void delete(Expense expense) {
+        this.expenseRepository.delete(expense);
+    }
+
 }

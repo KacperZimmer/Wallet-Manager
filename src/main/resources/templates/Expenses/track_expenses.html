@@ -1,28 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        .table thead {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-
 <div class="container mt-5">
     <h1 class="text-center mb-4">Expense Tracker</h1>
 
     <div class="expense-list mb-5">
-        <h2>Expenses</h2>
-        <div class="list-group">
-            <div class="list-group-item d-flex justify-content-between align-items-center">
-                <span>Groceries - $50</span>
-                <span class="badge badge-primary badge-pill">Food</span>
-            </div>
-            <div class="list-group-item d-flex justify-content-between align-items-center">
-                <span>Electricity Bill - $75</span>
-                <span class="badge badge-primary badge-pill">Utilities</span>
-            </div>
-        </div>
+        <h2 class="mb-4">Expenses</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="expense : ${expensesList}">
+                <form th:action="@{/expenses/delete/{id}(id=${expense.id})}" th:method="delete"
+                      onsubmit="return confirm('Czy na pewno chcesz usunąć ten wydatek?');">
+                    <input type="hidden" name="_method" value="delete" />
+                    <td th:text="${expense.name}">Expense Name </td>
+                    <td th:text="${expense.description}">Expense Description</td>
+                    <td th:text="${expense.amount}">Amount</td>
+                    <td th:text="${expense.date}">Date</td>
+                    <td th:text="${expense.category.name}">Category</td>
+                    <td>
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Usuń
+                        </button>
+                    </td>
+                </form>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="text-center mb-4">
@@ -31,6 +63,7 @@
         </button>
     </div>
 
+    <!-- Modal dodawania wydatku -->
     <div class="modal fade" id="addExpenseModal" tabindex="-1" aria-labelledby="addExpenseModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -64,7 +97,7 @@
 
                         <div class="form-group">
                             <label for="categories">Categories</label>
-                            <select id="categories" th:field="*{categories}" class="form-control" multiple>
+                            <select id="categories" th:field="*{category}" class="form-control" multiple>
                                 <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.name}"></option>
                             </select>
                         </div>
@@ -75,6 +108,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <!-- Bootstrap JS and dependencies -->

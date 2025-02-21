@@ -7,9 +7,7 @@ import org.example.walletmanagement.Service.CategoryService;
 import org.example.walletmanagement.Service.ExpenseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,25 +28,27 @@ public class ExpensesController {
 
         return "Expenses/test";
     }
+    @DeleteMapping ("/expenses/delete/{id}")
+    public String delete(@PathVariable Long id){
 
+        Expense expense1 = expenseService.findbyId(id);
+        this.expenseService.delete(expense1);
+
+        return "redirect:/expenses";
+    }
 
     @GetMapping("/expenses")
     public String trackExpenses(Model model) {
 
         Expense expense = new Expense();
         List<Category> categoryList = this.categoryService.findAll();
+        List<Expense> expenseList = this.expenseService.findAll();
         model.addAttribute("categoryList", categoryList);
+        model.addAttribute("expensesList", expenseList);
         model.addAttribute("expense", expense);
+
         return "Expenses/track_expenses";
     }
-
-    @PostMapping("/expenses")
-    public String addExpense(@ModelAttribute("expense") Expense expense){
-
-        expenseService.save(expense);
-        return "redirect:/expenses";
-    }
-
     @GetMapping("/expenses/add_category")
     public String addCategory(Model model){
 
@@ -57,6 +57,13 @@ public class ExpensesController {
         model.addAttribute("category", category);
 
         return "Expenses/add_category";
+    }
+
+    @PostMapping("/expenses")
+    public String addExpense(@ModelAttribute("expense") Expense expense){
+
+        expenseService.save(expense);
+        return "redirect:/expenses";
     }
 
 
